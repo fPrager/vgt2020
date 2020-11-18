@@ -5,6 +5,7 @@
         "react/jsx-props-no-spreading": "off" 
     },
     "globals": {    
-        "React": "writable"  
+        "React": "readonly",
+        "fetch": "readonly"
     }
 }

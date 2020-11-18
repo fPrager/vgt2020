@@ -4,135 +4,75 @@
             "id": "cs",
             "title": "Counter Strike: Global Offensive",
             "image": "https://picsum.photos/300/200",
-            "rules": "###**2** MATCHES  \n incl. team change \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
-            "notes": "",
+            "defaultRules": "###**2** MATCHES  \n incl. team change \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
+            "defaultNotes": "",
             "color": "#FEFFFF"
         },
         { 
             "id": "maps",
             "title": "Google Maps",
             "image": "https://picsum.photos/500/400",
-            "rules": "# **10** Words  \n ### **20**Minutes\n Gotta catch'em all!\n ###Points \n1 Word = 1 Point",
-            "notes": "",
+            "defaultRules": "# **10** Words  \n ### **20**Minutes\n Gotta catch'em all!\n ###Points \n1 Word = 1 Point",
+            "defaultNotes": "",
             "color": "#4E88D2"
         },
         { 
-            "id": "soldier",
-            "title": "Soldiers",
+            "id": "soldat",
+            "title": "Soldat",
             "image": "https://picsum.photos/501/450",
-            "rules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
-            "notes": "",
+            "defaultRules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
+            "defaultNotes": "",
             "color": "#535457"
         },
         { 
             "id": "ball",
-            "title": "Ball Soccer",
+            "title": "3D Ball: Soccer",
             "image": "https://picsum.photos/600/300",
-            "rules": "###**2** MATCHES  \n changing teams \n Team-Match",
-            "notes": "",
+            "defaultRules": "###**2** MATCHES  \n changing teams \n Team-Match",
+            "defaultNotes": "",
             "color": "#F9BB53"
         }
     ],
     "players": [
         {
             "id": "dani",
-            "name": "Dani",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Dani"
         },
         {
             "id": "fabi",
-            "name": "Fabi",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Fabi"
         },
         {
             "id": "steff",
-            "name": "Steff",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Steff"
         },
         {
             "id": "matthi",
-            "name": "Matthi",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Matthi"
         },
         {
             "id": "heisi",
-            "name": "Heisi",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Heisi"
         },
         {
             "id": "andi",
-            "name": "Andi",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Andi"
         },
         {
             "id": "tino",
-            "name": "Tino",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Tino"
         },
         {
             "id": "fex",
-            "name": "Fex",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Fex"
         },
         {
             "id": "arvid",
-            "name": "Arvid",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Arvid"
         },
         {
             "id": "gegz",
-            "name": "Gegz",
-            "scores": [
-                { "gameId": "cs", "score": 0 },
-                { "gameId": "maps", "score": 0 },
-                { "gameId": "soldier", "score": 0 },
-                { "gameId": "ball", "score": 0 }
-            ]
+            "name": "Gegz"
         }
     ],
     "maxGameScore": 30

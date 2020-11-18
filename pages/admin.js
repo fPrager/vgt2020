@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+
 import {
   Select, Button, Divider, InputNumber, Row, Col, Skeleton, Input,
 } from 'antd';
@@ -17,7 +19,7 @@ export default () => {
   const [loading, setLoading] = useState(false);
   const [savings, setSavings] = useState({});
 
-  const requestScore = async () => {
+  const requestGameData = async () => {
     setLoading(true);
 
     const resScores = await fetch('./api/get-scores');
@@ -40,7 +42,7 @@ export default () => {
 
   const saveScores = async () => {
     setSavings({ ...savings, scores: true });
-    const res = await fetch('./api/set-scores', {
+    await fetch('./api/set-scores', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,8 +56,24 @@ export default () => {
     setSavings({ ...savings, scores: false });
   };
 
+  const saveRules = async () => {
+    setSavings({ ...savings, rules: true });
+    await fetch('./api/set-game', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        rules,
+        gameId,
+      }),
+    });
+    await new Promise((resolve) => (setTimeout(resolve, 1000)));
+    setSavings({ ...savings, rules: false });
+  };
+
   useEffect(() => {
-    requestScore();
+    requestGameData();
     return () => {};
   }, [gameId]);
 
@@ -63,19 +81,23 @@ export default () => {
     <>
       <Divider><div className="headline">Rules</div></Divider>
       <Row>
-        <Col span="12">
-          <TextArea value={rules} onChange={(e) => (setRules(e.target.value))} />
+        <Col span="11">
+          <TextArea className="clean-input" value={rules} onChange={(e) => (setRules(e.target.value))} />
         </Col>
-        <Col span="12" />
+        <Col span="2" />
+        <Col span="11">
+          <ReactMarkdown>{rules}</ReactMarkdown>
+        </Col>
       </Row>
-      <Button>Save</Button>
+      <Button loading={savings.rules} onClick={saveRules}>Save</Button>
       <Divider><div className="headline">Notes</div></Divider>
       <Row>
-        <Col span="12">
-          <TextArea value={notes} onChange={(e) => (setNotes(e.target.value))} />
+        <Col span="11">
+          <TextArea className="clean-input" value={notes} onChange={(e) => (setNotes(e.target.value))} />
         </Col>
-        <Col span="12">
-          {notes}
+        <Col span="2" />
+        <Col span="11">
+          <ReactMarkdown>{notes}</ReactMarkdown>
         </Col>
       </Row>
       <Button>Save</Button>

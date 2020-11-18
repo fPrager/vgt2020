@@ -1,26 +1,26 @@
-import { PrismaClient } from '@prisma/client';
-
 import Data from '../../mock/data.json';
-
-const prisma = new PrismaClient();
+import DB from '../../data/db';
 
 export default async (req, res) => {
+  console.log('delete points');
+  await DB.points.deleteMany();
+
   console.log('reset games');
-  await prisma.game.deleteMany();
+  await DB.game.deleteMany();
   await Promise.all(
-    Data.games.map((g) => prisma.game.create({
+    Data.games.map((g) => DB.game.create({
       data: {
         key: g.id,
-        rules: g.rules,
-        notes: g.notes,
+        rules: g.defaultRules,
+        notes: g.defaultNotes,
       },
     })),
   );
 
   console.log('reset player');
-  await prisma.player.deleteMany();
+  await DB.player.deleteMany();
   await Promise.all(
-    Data.players.map((p) => prisma.player.create({
+    Data.players.map((p) => DB.player.create({
       data: {
         key: p.id,
       },
@@ -28,8 +28,8 @@ export default async (req, res) => {
   );
 
   console.log('reset vgt');
-  await prisma.vGT.deleteMany();
-  await prisma.vGT.create({
+  await DB.vGT.deleteMany();
+  await DB.vGT.create({
     data: {
     },
   });

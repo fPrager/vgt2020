@@ -30,14 +30,6 @@ const Scorebord = () => {
 
   useEffect(() => {
     const id = setInterval(async () => {
-      /* const ms = Data.players.reduce((mockedScores, p) => {
-        const obj = { ...mockedScores };
-        Data.games.forEach((g) => {
-          obj[`${g.id}-${p.id}`] = Math.round(Math.random() * (Data.maxGameScore / Data.games.length));
-        });
-        return obj;
-      }, {});
-      setScores(ms); */
       const res = await fetch('./api/get-scores');
       const data = await res.json();
       const scoreObj = Object.keys(data).reduce((obj, key) => {
