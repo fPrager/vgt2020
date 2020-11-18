@@ -3,7 +3,7 @@
 @import './colors.less';
 @import './trophy.less';
 
-@borderRadius: 10px;
+@borderRadius: 30px;
 
 body {
     font-family: 'Couture', 'Courier New', Courier, monospace;
@@ -123,37 +123,82 @@ body {
     margin: 20px;
 }
 
+.notes, 
 .rules {
-    background-color: @grey-light;
     border: 4px @grey-dark solid;
     border-radius: @borderRadius;
     padding: 10px;
-    width: 50%;
+    width: 100%;
     transform: rotate(-1deg);
+    background-color: @grey-translu;
+    padding: 2rem;
+    a   {
+        color: inherit;
+        background:url(/assets/external-link.ico) no-repeat left center;
+        background-size: contain;
+        padding-left:2rem;
+    }
+    a:hover {
+        color: @orange;
+    }
+
+}
+
+strong {
+    color: @blue;
+}
+em {
+    color: @orange;
 }
 
 .image {
-    text-align: center;
+    transform: rotate(2deg);
     width: min-content;
     position: absolute;
-    right: 3rem;
-    top: 7rem;
-    transform: rotate(5deg);
-    border: 4px @grey-dark solid;
-    border-radius: @borderRadius;
-    overflow: hidden;
+    right: 2rem;
+    top: 3rem;
+
+    img {
+        width: 30vh;
+        border: 5px @grey-dark solid;
+        border-radius: @borderRadius;
+    }
 }
-.image img {
-    display: block;
+
+body {
+    font-size: 1.5rem;
 }
-.image div {
-    zoom: 1;
+
+h1,
+h2,
+.headline {
+    -webkit-text-stroke: 1px @grey-dark; /* width and color */
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(@orange, @orange-light);
+    background-clip: text;
+    strong {
+        -webkit-text-stroke: 1px @grey-dark; /* width and color */
+        background: -webkit-linear-gradient(@white, @white);
+        background-clip: text;
+        font-size: inherit;
+    }
+}
+
+h1 {
+    font-size: 2rem;
+    -webkit-background-clip: text;
+}
+
+h2 {
+    -webkit-text-stroke: 0px @grey-dark; /* width and color */
 }
 
 .headline {
-    font-size: 2rem;
-    -webkit-text-stroke: 1px @grey-dark; /* width and color */
-    color:@orange;
+    font-size: 3rem;
+    transform: rotate(-1deg);
+    background: -webkit-linear-gradient(@blue, @blue-light);
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 .ant-menu-item-selected{

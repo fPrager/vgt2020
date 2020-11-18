@@ -22,7 +22,7 @@ export default () => {
   const requestGameData = async () => {
     setLoading(true);
 
-    const resScores = await fetch('./api/get-scores');
+    const resScores = await fetch('/api/get-scores');
     const dataScores = await resScores.json();
     const scoresOfGame = Data.players.reduce((obj, p) => ({
       ...obj,
@@ -30,7 +30,7 @@ export default () => {
     }), {});
     setScores(scoresOfGame);
 
-    const resGame = await fetch(`./api/get-game?gameId=${gameId}`);
+    const resGame = await fetch(`/api/get-game?gameId=${gameId}`);
     const dataGame = await resGame.json();
 
     setRules(dataGame.rules);
@@ -42,7 +42,7 @@ export default () => {
 
   const saveScores = async () => {
     setSavings({ ...savings, scores: true });
-    await fetch('./api/set-scores', {
+    await fetch('/api/set-scores', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export default () => {
 
   const saveRules = async () => {
     setSavings({ ...savings, rules: true });
-    await fetch('./api/set-game', {
+    await fetch('/api/set-game', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,6 +72,22 @@ export default () => {
     setSavings({ ...savings, rules: false });
   };
 
+  const saveNotes = async () => {
+    setSavings({ ...savings, notes: true });
+    await fetch('/api/set-game', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        notes,
+        gameId,
+      }),
+    });
+    await new Promise((resolve) => (setTimeout(resolve, 1000)));
+    setSavings({ ...savings, notes: false });
+  };
+
   useEffect(() => {
     requestGameData();
     return () => {};
@@ -82,25 +98,29 @@ export default () => {
       <Divider><div className="headline">Rules</div></Divider>
       <Row>
         <Col span="11">
-          <TextArea className="clean-input" value={rules} onChange={(e) => (setRules(e.target.value))} />
+          <TextArea className="clean-input" autoSize value={rules} onChange={(e) => (setRules(e.target.value))} />
         </Col>
         <Col span="2" />
         <Col span="11">
-          <ReactMarkdown>{rules}</ReactMarkdown>
+          <div className="rules">
+            <ReactMarkdown>{rules}</ReactMarkdown>
+          </div>
         </Col>
       </Row>
       <Button loading={savings.rules} onClick={saveRules}>Save</Button>
       <Divider><div className="headline">Notes</div></Divider>
       <Row>
         <Col span="11">
-          <TextArea className="clean-input" value={notes} onChange={(e) => (setNotes(e.target.value))} />
+          <TextArea className="clean-input" autoSize value={notes} onChange={(e) => (setNotes(e.target.value))} />
         </Col>
         <Col span="2" />
         <Col span="11">
-          <ReactMarkdown>{notes}</ReactMarkdown>
+          <div className="notes">
+            <ReactMarkdown>{notes}</ReactMarkdown>
+          </div>
         </Col>
       </Row>
-      <Button>Save</Button>
+      <Button loading={savings.notes} onClick={saveNotes}>Save</Button>
       <Divider><div className="headline">Scores</div></Divider>
       {
         Object.keys(scores).map((pId) => {
