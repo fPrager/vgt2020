@@ -1,9 +1,30 @@
-CREATE TABLE "app"."User" (
+CREATE TABLE "app"."Player" (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255),
-  email VARCHAR(255) UNIQUE NOT NULL
+  key VARCHAR(255) UNIQUE NOT NULL
 );
 
+CREATE TABLE "app"."Points" (
+  id SERIAL PRIMARY KEY NOT NULL,
+  "gameId" INTEGER NOT NULL,
+  FOREIGN KEY ("gameId") REFERENCES "app"."Game"(id),
+  "playerId" INTEGER NOT NULL,
+  FOREIGN KEY ("playerId") REFERENCES "app"."Player"(id),
+  "score" INTEGER NOT NULL
+);
+
+CREATE TABLE "app"."Game" (
+  id SERIAL PRIMARY KEY NOT NULL,
+  key VARCHAR(255) UNIQUE NOT NULL,
+  rules TEXT,
+  notes TEXT
+);
+
+CREATE TABLE "app"."VGT" (
+  id SERIAL PRIMARY KEY NOT NULL,
+  final BOOLEAN NOT NULL DEFAULT false
+);
+
+/*
 CREATE TABLE "app"."Post" (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
@@ -20,3 +41,5 @@ CREATE TABLE "app"."Profile" (
   "userId" INTEGER UNIQUE NOT NULL,
   FOREIGN KEY ("userId") REFERENCES "app"."User"(id)
 );
+
+*/

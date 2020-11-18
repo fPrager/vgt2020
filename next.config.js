@@ -23,6 +23,7 @@ const config = withCSS({
       },
     }),
   ),
+  excludeFile: (str) => /\*.json/.test(str),
 });
 
 module.exports = withImages(config);

@@ -23,20 +23,37 @@ const pyramid = (playerScores) => {
   return newArr;
 };
 
+const REFRESH_INTERVALL = 5000;
+
 const Scorebord = () => {
   const [scores, setScores] = useState({});
 
   useEffect(() => {
-    const id = setInterval(() => {
-      const ms = Data.players.reduce((mockedScores, p) => {
+    const id = setInterval(async () => {
+      /* const ms = Data.players.reduce((mockedScores, p) => {
         const obj = { ...mockedScores };
         Data.games.forEach((g) => {
           obj[`${g.id}-${p.id}`] = Math.round(Math.random() * (Data.maxGameScore / Data.games.length));
         });
         return obj;
       }, {});
-      setScores(ms);
-    }, 30000);
+      setScores(ms); */
+      const res = await fetch('./api/get-scores');
+      const data = await res.json();
+      const scoreObj = Object.keys(data).reduce((obj, key) => {
+        const playerScores = data[key];
+        return {
+          ...obj,
+          ...playerScores.reduce((obj1, s) => (
+            {
+              ...obj1,
+              [`${s.gameId}-${key}`]: s.score,
+            }
+          ), {}),
+        };
+      }, {});
+      setScores(scoreObj);
+    }, REFRESH_INTERVALL);
     return () => clearInterval(id);
   });
 
@@ -80,10 +97,9 @@ const Scorebord = () => {
 
   return (
     <>
-      <Divider><div className="headline"> Scores</div></Divider>
+      <TropyIcon />
       <div className="scoreboard">
         { createScoreboard() }
-        <TropyIcon />
       </div>
     </>
   );

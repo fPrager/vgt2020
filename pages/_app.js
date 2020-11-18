@@ -38,6 +38,8 @@ const MyApp = ({ Component, pageProps }) => {
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['score']}>
+            <div className="logo" />
+            <Divider />
             <Menu.Item key="score" icon={<TrophyOutlined />}>
               <Link href="/">Scoreboard</Link>
             </Menu.Item>

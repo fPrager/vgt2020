@@ -1,6 +1,7 @@
 const TropyIcon = () => (
-  <div className="trophy">
-    <img alt="trophy" className="player-icon" src={require('../assets/avatar/player0.svg')} />
+  <div className="raysDemoHolder">
+    <div className="trophy" />
+    <div className="rays" />
   </div>
 );
 
