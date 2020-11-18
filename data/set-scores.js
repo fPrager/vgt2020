@@ -1,11 +1,7 @@
-import { PrismaClient } from '@prisma/client';
-
-// const prisma = new PrismaClient();
+import DB from './db';
 
 export default async (playerId, gameId, score) => {
-
-/*
-  const existingPoint = await prisma.points.findFirst({
+  const existingPoint = await DB.points.findFirst({
     where: {
       game: { key: gameId },
       player: { key: playerId },
@@ -13,7 +9,7 @@ export default async (playerId, gameId, score) => {
   });
 
   if (existingPoint) {
-    await prisma.points.update({
+    await DB.points.update({
       where: {
         id: existingPoint.id,
       },
@@ -24,7 +20,7 @@ export default async (playerId, gameId, score) => {
     return;
   }
 
-  await prisma.points.create({
+  await DB.points.create({
     data: {
       score,
       game: {
@@ -39,5 +35,4 @@ export default async (playerId, gameId, score) => {
       },
     },
   });
-  */
 };

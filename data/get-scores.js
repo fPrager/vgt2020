@@ -1,11 +1,9 @@
-import { PrismaClient } from '@prisma/client';
-import Data from '../mock/data.json';
+import DB from './db';
 
-// const prisma = new PrismaClient();
-/*
-  const points = await prisma.points.findMany();
-  const games = await prisma.game.findMany();
-  const player = await prisma.player.findMany();
+export default async () => {
+  const points = await DB.points.findMany();
+  const games = await DB.game.findMany();
+  const player = await DB.player.findMany();
 
   const scores = player.reduce((obj, p) => ({
     ...obj,
@@ -19,6 +17,5 @@ import Data from '../mock/data.json';
     })),
   }), {});
 
-  return scores; */
-
-export default async () => Data.players.reduce((obj, p) => ({ ...obj, [p.id]: p.scores }), {});
+  return scores;
+};

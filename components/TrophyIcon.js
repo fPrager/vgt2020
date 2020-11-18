@@ -1,6 +1,6 @@
 const TropyIcon = () => (
-  <div className="raysDemoHolder">
-    <div className="trophy" />
+  <div className="trophy">
+    <div className="trophy-icon" />
     <div className="rays" />
   </div>
 );

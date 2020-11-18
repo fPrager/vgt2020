@@ -1,15 +1,10 @@
-import { PrismaClient } from '@prisma/client';
-
-// const prisma = new PrismaClient();
+import DB from './db';
 
 export default async (gameId, data) => {
-
-/*
-  await prisma.game.update({
+  await DB.game.update({
     where: {
       key: gameId,
     },
     data,
   });
-  */
 };
