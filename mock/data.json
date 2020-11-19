@@ -1,12 +1,12 @@
 {
     "games": [
         { 
-            "id": "cs",
-            "title": "Counter Strike: Global Offensive",
-            "image": "https://picsum.photos/300/200",
-            "defaultRules": "###**2** MATCHES  \n incl. team change \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
+            "id": "soldat",
+            "title": "Soldat",
+            "image": "https://picsum.photos/501/450",
+            "defaultRules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
             "defaultNotes": "",
-            "color": "#FEFFFF"
+            "color": "#4E88D2"
         },
         { 
             "id": "maps",
@@ -14,21 +14,21 @@
             "image": "https://picsum.photos/500/400",
             "defaultRules": "# **10** Words  \n ### **20**Minutes\n Gotta catch'em all!\n ###Points \n1 Word = 1 Point",
             "defaultNotes": "",
-            "color": "#4E88D2"
-        },
-        { 
-            "id": "soldat",
-            "title": "Soldat",
-            "image": "https://picsum.photos/501/450",
-            "defaultRules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
-            "defaultNotes": "",
-            "color": "#535457"
+            "color": "#4ec0e4"
         },
         { 
             "id": "ball",
             "title": "3D Ball: Soccer",
             "image": "https://picsum.photos/600/300",
             "defaultRules": "###**2** MATCHES  \n changing teams \n Team-Match",
+            "defaultNotes": "",
+            "color": "#F69200"
+        },
+        { 
+            "id": "cs",
+            "title": "Counter Strike: Global Offensive",
+            "image": "https://picsum.photos/300/200",
+            "defaultRules": "###**2** MATCHES  \n incl. team change \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
             "defaultNotes": "",
             "color": "#F9BB53"
         }

@@ -1,6 +1,5 @@
-import { Divider } from 'antd';
-
 import { useEffect, useState } from 'react';
+import { Tooltip } from 'antd';
 import Data from '../mock/data.json';
 import PlayerIcon from '../components/PlayerIcon';
 import TropyIcon from '../components/TrophyIcon';
@@ -26,56 +25,63 @@ const pyramid = (playerScores) => {
 const REFRESH_INTERVALL = 5000;
 
 const Scorebord = () => {
-  const [scores, setScores] = useState({});
+  const [initial, setInital] = useState(true);
+  const [lefts, setLefts] = useState(Data.players.map((p, index) => (100 * (index / Data.players.length))));
+  const [heights, setHeights] = useState(new Array(Data.players.length).fill(new Array(Data.games.length).fill(0)));
+  const [points, setPoints] = useState(new Array(Data.players.length).fill(new Array(Data.games.length).fill(0)));
+
+  const updateLeftsAndHeights = async () => {
+    const res = await fetch('./api/get-scores');
+    const data = await res.json();
+    const playerScores = pyramid(Data.players.map(
+      (p) => ({ id: p.id, score: data[p.id].reduce((sum, g) => (sum + g.score), 0) }),
+    ));
+    const newLefts = Data.players.map(
+      (p) => playerScores.findIndex((s) => s.id === p.id),
+    ).map((index) => (100 * (index / playerScores.length)));
+    setLefts(newLefts);
+
+    const newHeights = Data.players.map((p) => Data.games.map((g) => (Math.round((data[p.id].find((e) => e.gameId === g.id).score / Data.maxGameScore) * 100))));
+    setHeights(newHeights);
+
+    const newPoints = Data.players.map((p) => Data.games.map((g) => (data[p.id].find((e) => e.gameId === g.id).score)));
+    setPoints(newPoints);
+
+    setInital(false);
+  };
 
   useEffect(() => {
-    const id = setInterval(async () => {
-      const res = await fetch('./api/get-scores');
-      const data = await res.json();
-      const scoreObj = Object.keys(data).reduce((obj, key) => {
-        const playerScores = data[key];
-        return {
-          ...obj,
-          ...playerScores.reduce((obj1, s) => (
-            {
-              ...obj1,
-              [`${s.gameId}-${key}`]: s.score,
-            }
-          ), {}),
-        };
-      }, {});
-      setScores(scoreObj);
-    }, REFRESH_INTERVALL);
+    if (initial) {
+      updateLeftsAndHeights();
+      return () => {};
+    }
+
+    const id = setInterval(updateLeftsAndHeights, REFRESH_INTERVALL);
     return () => clearInterval(id);
   });
 
-  const getScoreOfPlayerInGame = (gameId, playerId) => scores[`${gameId}-${playerId}`] || 0;
-  const getHeightOfGameSegment = (gameId, playerId) => `${Math.round((getScoreOfPlayerInGame(gameId, playerId) / Data.maxGameScore) * 100)}%`;
-  const getScoreOfPlayer = (playerId) => Data.games.reduce((sum, g) => (sum + (scores[`${g.id}-${playerId}`] || 0)), 0);
-  const playerScores = pyramid(Data.players.map((p) => ({ ...p, score: getScoreOfPlayer(p.id) })));
-
-  const getPlayerOrder = (playerId) => playerScores.findIndex((p) => (p.id === playerId));
-
-  const createScoreboard = () => Data.players.map((p) => (
-    <div key={p.id} className="player" style={{ order: getPlayerOrder(p.id) }}>
+  const createScoreboard = () => Data.players.map((p, pIndex) => (
+    <div key={p.id} className="player" style={{ left: `${lefts[pIndex]}%` }}>
       <div className="bar">
         {
-          Data.games.map((g) => (
-            getScoreOfPlayerInGame(g.id, p.id)
+          Data.games.map((g, gIndex) => (
+            heights[pIndex][gIndex]
               ? (
-                <div
-                  key={g.id}
-                  className="segment"
-                  style={
+                <Tooltip placement="top" title={g.title}>
+                  <div
+                    key={g.id}
+                    className="segment"
+                    style={
                 {
-                  height: getHeightOfGameSegment(g.id, p.id),
+                  height: `${heights[pIndex][gIndex]}%`,
                   backgroundColor: g.color,
                 }
 }
-                >
-                  <div className="side-shadow" />
-                  <div className="center">{getScoreOfPlayerInGame(g.id, p.id)}</div>
-                </div>
+                  >
+                    <div className="side-shadow" />
+                    <div className="center">{points[pIndex][gIndex]}</div>
+                  </div>
+                </Tooltip>
               )
               : ''
           ))
@@ -89,12 +95,12 @@ const Scorebord = () => {
 
   return (
     <>
-      <TropyIcon />
-      <div className="scoreboard">
+      <div className="scoreboard" style={{ minWidth: `${Data.players.length * 6}rem` }}>
+        <TropyIcon />
         { createScoreboard() }
       </div>
     </>
   );
 };
 
-export default Scorebord;
+export default React.memo(Scorebord);

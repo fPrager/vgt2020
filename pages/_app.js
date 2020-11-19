@@ -18,7 +18,7 @@ import '../styles/antd.less';
 const { Sider, Content } = Layout;
 
 const MyApp = ({ Component, pageProps }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   const toggle = () => {
     setCollapsed(!collapsed);

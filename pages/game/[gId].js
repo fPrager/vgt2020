@@ -34,7 +34,6 @@ const Game = ({
   const [notes, setNotes] = useState(false);
 
   const requestGameData = async () => {
-    console.log('request', id);
     const resGame = await fetch(`/api/get-game?gameId=${id}`);
     const dataGame = await resGame.json();
 
@@ -55,14 +54,21 @@ const Game = ({
           { title }
         </div>
       </Divider>
-      <div className="image">
-        <img alt={title} src={`${REMOTE_ASSET_URL}/games/${id}.png`} />
-      </div>
-      {
+      <Row justify="center">
+        <Col span="12" flex>
+          <div className="image">
+            <img alt={title} src={`${REMOTE_ASSET_URL}/games/${id}.png`} />
+          </div>
+        </Col>
+      </Row>
+      <div className="game--text-container">
+        {
         rules
           && (
-          <Row>
-            <Col span="24">
+            <div className="game--text">
+              <div className="subline">
+                Rules
+              </div>
               <div className="rules">
                 {
                 rules === false
@@ -70,15 +76,16 @@ const Game = ({
                   : <ReactMarkdown>{rules}</ReactMarkdown>
               }
               </div>
-            </Col>
-          </Row>
+            </div>
           )
       }
-      {
+        {
         notes
           && (
-          <Row>
-            <Col span="24">
+            <div className="game--text">
+              <div className="subline">
+                Notes
+              </div>
               <div className="notes">
                 {
                 notes === false
@@ -86,10 +93,10 @@ const Game = ({
                   : <ReactMarkdown>{notes}</ReactMarkdown>
               }
               </div>
-            </Col>
-          </Row>
+            </div>
           )
       }
+      </div>
     </div>
   );
 };
