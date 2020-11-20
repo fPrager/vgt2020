@@ -1,0 +1,117 @@
+soldat 
+
+## **3** MAtches
+### Deathmatch
+## Maps
+Airpirates **10 min**
+
+Bigfalls **10 min**
+
+## points
+sum points of all matches\
+### p1: **4**
+### p2+3+4: **5**
+### P5+6+7: **2**
+### P8+9+10: **1**
+
+Maps
+# **10** Words  
+# **20** Minutes
+*gotta catch them all*
+
+## Points
+### **1** word = **0.5** Point
+### **1** extra point for the *maps champ*
+
+## hints
+- only collect valid google street view links
+- you will teamup in pairs in **privat chat rooms**
+- the operator (**dani**) will move you in TS-Rooms
+- your teammate has the **other** *colored* words
+- help or distract each other
+- after **20** min is a **5** min evaluation time, where you check the links of your mate
+- the *maps champ* is one of you two with more points !!!!
+- post your findings in the private chat room like this:\
+
+**[Esel .... http://maps.gstatic.com/m/streetview/?hl=en&ll=-23.527824,24.72265&spn=8.405416,14.27124&t=m&layer=c&cbll=-23.527824,24.72265&panoid=3L-F887yPcBnejtJvT6DoA&cbp=12,335.71,,0,19.65&z=7](http://maps.gstatic.com/m/streetview/?hl=en&ll=-23.527824,24.72265&spn=8.405416,14.27124&t=m&layer=c&cbll=-23.527824,24.72265&panoid=3L-F887yPcBnejtJvT6DoA&cbp=12,335.71,,0,19.65&z=7)**
+
+
+### Start - ??:??
+## End of Search - ??:?? 
+### End of validation - ??:??
+___
+
+### Players
+... ?
+### Words *Orange*
+1. *?*
+2. *?*
+3. *?*
+4. *?*
+5. *?*
+6. *?*
+7. *?*
+8. *?*
+9. *?*
+10. *?*
+
+___
+
+### Players
+... ?
+### Words **Blue**
+1. *?*
+2. *?*
+3. *?*
+4. *?*
+5. *?*
+6. *?*
+7. *?*
+8. *?*
+9. *?*
+10. *?*
+
+ball
+
+## **3** MATCHES  
+### real soccer **10 min**
+### basketball **10 min**
+### hockey **10 min**
+
+## points
+winning team: **1**
+
+### Team *Orange* 
+?
+### Team **blue**
+?
+
+cs
+
+# 2 Matches
+incl. Team Change 
+
+## Maps 
+
+- [santorini](https://steamcommunity.com/sharedfiles/filedetails/?id=546623875)&nbsp;&nbsp;&nbsp;&nbsp; **15 rounds**
+- [ZOO](https://steamcommunity.com/sharedfiles/filedetails/?id=389175812)&nbsp;&nbsp;&nbsp;&nbsp;**15 rounds**
+
+## Points 
+### Winning Team: **1**
+
+### Players:
+sum of both matches
+### P1: **4**
+### P2+3+4: **3**
+### P5+6+7: **2**
+### P8+9+10: **1**
+
+## hints
+- **Team a** starts each round as **CT**
+
+## round 1
+### Team a: ?
+### Team b: ?
+## round 2
+### Team a: ?
+Team b: ?

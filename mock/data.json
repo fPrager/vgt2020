@@ -1,14 +1,6 @@
 {
     "games": [
         { 
-            "id": "soldat",
-            "title": "Soldat",
-            "image": "https://picsum.photos/501/450",
-            "defaultRules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
-            "defaultNotes": "",
-            "color": "#4E88D2"
-        },
-        { 
             "id": "maps",
             "title": "Google Maps",
             "image": "https://picsum.photos/500/400",
@@ -17,8 +9,16 @@
             "color": "#4ec0e4"
         },
         { 
+            "id": "soldat",
+            "title": "Soldat",
+            "image": "https://picsum.photos/501/450",
+            "defaultRules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
+            "defaultNotes": "",
+            "color": "#4E88D2"
+        },
+        { 
             "id": "ball",
-            "title": "3D Ball: Soccer",
+            "title": "3D Ball: Soccer Online",
             "image": "https://picsum.photos/600/300",
             "defaultRules": "###**2** MATCHES  \n changing teams \n Team-Match",
             "defaultNotes": "",
