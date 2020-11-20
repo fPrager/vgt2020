@@ -1,20 +1,20 @@
 {
     "games": [
         { 
-            "id": "maps",
-            "title": "Google Maps",
-            "image": "https://picsum.photos/500/400",
-            "defaultRules": "# **10** Words  \n ### **20**Minutes\n Gotta catch'em all!\n ###Points \n1 Word = 1 Point",
-            "defaultNotes": "",
-            "color": "#4ec0e4"
-        },
-        { 
             "id": "soldat",
             "title": "Soldat",
             "image": "https://picsum.photos/501/450",
             "defaultRules": "###**5** MATCHES  \n Deatchmatch \n ###Map \n Dust II \n ###Points \n Winning Team: 1 \n Players",
             "defaultNotes": "",
             "color": "#4E88D2"
+        },
+        { 
+            "id": "maps",
+            "title": "Google Maps",
+            "image": "https://picsum.photos/500/400",
+            "defaultRules": "# **10** Words  \n ### **20**Minutes\n Gotta catch'em all!\n ###Points \n1 Word = 1 Point",
+            "defaultNotes": "",
+            "color": "#4ec0e4"
         },
         { 
             "id": "ball",
