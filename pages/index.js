@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'antd';
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 import Data from '../mock/data.json';
 import PlayerIcon from '../components/PlayerIcon';
 import TropyIcon from '../components/TrophyIcon';
@@ -29,6 +31,8 @@ const Scorebord = () => {
   const [lefts, setLefts] = useState(Data.players.map((p, index) => (100 * (index / Data.players.length))));
   const [heights, setHeights] = useState(new Array(Data.players.length).fill(new Array(Data.games.length).fill(0)));
   const [points, setPoints] = useState(new Array(Data.players.length).fill(new Array(Data.games.length).fill(0)));
+  const [{ width, height }, setDimension] = useState({ width: 0, height: 0 });
+  const [showConfetti, setShowConfett] = useState(false);
 
   const updateLeftsAndHeights = async () => {
     const res = await fetch('./api/get-scores');
@@ -48,6 +52,12 @@ const Scorebord = () => {
     setPoints(newPoints);
 
     setInital(false);
+
+    setDimension({ width: window.screen.width, height: window.screen.height });
+
+    const resFinal = await fetch('./api/get-final');
+    const dataFinal = await resFinal.json();
+    setShowConfett(dataFinal.final);
   };
 
   useEffect(() => {
@@ -95,6 +105,7 @@ const Scorebord = () => {
 
   return (
     <>
+      <Confetti width={width} height={height} numberOfPieces={showConfetti ? 200 : 1} />
       <div className="scoreboard" style={{ minWidth: `${Data.players.length * 6}rem` }}>
         <TropyIcon />
         { createScoreboard() }

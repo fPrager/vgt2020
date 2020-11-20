@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import {
-  Select, Button, Divider, InputNumber, Row, Col, Skeleton, Input, Space,
+  Select, Button, Divider, InputNumber, Row, Col, Skeleton, Input, Switch,
 } from 'antd';
 
 import Data from '../mock/data.json';
@@ -62,6 +62,7 @@ export default () => {
   const [gameId, setGameId] = useState(Data.games[0].id);
   const [loading, setLoading] = useState(false);
   const [savings, setSavings] = useState({});
+  const [final, setFinal] = useState(false);
 
   // general team stuff
   const [outputTeams, setOutputTeams] = useState('');
@@ -105,6 +106,23 @@ export default () => {
 
     await new Promise((resolve) => (setTimeout(resolve, 1000)));
     setLoading(false);
+
+    const resFinal = await fetch('/api/get-final');
+    const dataFinal = await resFinal.json();
+    setFinal(dataFinal.final);
+  };
+
+  const changeFinalState = async (flag) => {
+    setFinal(flag);
+    await fetch('/api/set-final', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        final: flag,
+      }),
+    });
   };
 
   const saveScores = async () => {
@@ -281,6 +299,13 @@ export default () => {
 
   return (
     <>
+      <Row justify="end">
+        <Col>
+          <h3>Activate Confetti Power</h3>
+          <Switch loading={loading} checked={final} onChange={changeFinalState} />
+        </Col>
+      </Row>
+      <Divider />
       <Select defaultValue={Data.games[0].id} style={{ width: 600 }} onChange={setGameId}>
         {Data.games.map((g) => (<Option value={g.id}>{g.title}</Option>))}
       </Select>
