@@ -73,7 +73,7 @@ body {
 .bar {
     flex-grow: 1;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-direction: column;
     color: black;
     min-width: 5rem;
@@ -244,6 +244,8 @@ h2 {
 .ant-menu-item-selected{
     .game-icon {
         background-color: @orange;
+        -webkit-mask-size: cover;
+        mask-size: cover;
     }
 }
 
@@ -267,6 +269,7 @@ h2 {
     margin-right: 5px;
     background-color:rgba(255, 255, 255, 0.65);
     mask-size: contain;
+    -webkit-mask-size: cover;
 }
 
 .clean-input {
